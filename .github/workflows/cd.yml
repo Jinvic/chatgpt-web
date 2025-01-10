@@ -120,7 +120,7 @@ jobs:
           script: |
             #!/usr/bin/env bash
             eval "$(vfox activate bash)"
-            cd ${{ secrets.BACKEND_PATH }}
+            cd ${{ secrets.BACKEND_PATH }}/build/
             vfox use nodejs@22.13.0
             pm2 restart chatgpt-web-service || pm2 start "pnpm prod" --name "chatgpt-web-service"
 
