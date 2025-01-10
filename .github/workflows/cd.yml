@@ -121,7 +121,7 @@ jobs:
             #!/usr/bin/env bash
             eval "$(vfox activate bash)"
             vfox use nodejs@22.13.0
-            cd ${{ secrets.BACKEND_PATH }}/build/ && pwd && (pm2 restart chatgpt-web-service || pm2 start "pnpm prod" --name "chatgpt-web-service")
+            cd ~/workspace/nodejs/chatgpt-web/service/build && pwd && (pm2 restart chatgpt-web-service || pm2 start "pnpm prod" --name "chatgpt-web-service")
 
   # 并行运行任务
   deploy:
