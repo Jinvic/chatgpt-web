@@ -78,10 +78,6 @@ jobs:
       - name: Install pnpm
         run: npm install pnpm -g
 
-      # 切换目录
-      - name: Change to dist directory
-        run: cd service
-
       # 缓存pnpm依赖
       - name: Cache pnpm modules
         uses: actions/cache@v3
