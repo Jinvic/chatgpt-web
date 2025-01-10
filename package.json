@@ -16,7 +16,7 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "bootstrap": "pnpm install && pnpm run common:prepare",
+    "bootstrap": "pnpm install",
     "common:cleanup": "rimraf node_modules && rimraf pnpm-lock.yaml"
   },
   "dependencies": {
