@@ -99,9 +99,14 @@ jobs:
       - name: Build Website
         run: pnpm run build
 
-      # 复制一份配置文件
-      - name: Copy package.json
-        run: cp package.json ./build/
+      # 创建文件夹用于部署
+      - name: Create folder for deploy
+        run: |
+          mkdir deploy
+          cp package.json ./deploy/
+          mv ./build/ ./deploy/
+          ls ./deploy/
+
 
       # 部署到服务器
       - name: Sync files
@@ -110,7 +115,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER_BACKEND }}
           password: ${{ secrets.FTP_PASS_BACKEND }}
-          local-dir: ${{ github.workspace }}/service/build/
+          local-dir: ${{ github.workspace }}/service/deploy/
           server-dir: ./
 
       # 启动后端服务
