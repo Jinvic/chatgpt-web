@@ -54,7 +54,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          source: ${{ github.workspace }}/dist/*
+          source: ./dist/*
           target: ${{ secrets.FRONTEND_PATH }}
 
   backend:
@@ -104,7 +104,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          source: ${{ github.workspace }}/service/dist/*
+          source: ./dist/*
           target: ${{ secrets.BACKEND_PATH }}
 
       # 启动后端服务
