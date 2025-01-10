@@ -118,10 +118,12 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
+            #!/usr/bin/env bash
+            echo 'eval "$(vfox activate bash)"' >> ~/.bashrc
+            source ~/.bashrc
             cd ${{ secrets.BACKEND_PATH }} 
-            eval "$(vfox activate)"
-            vfox use nodejs@22.13.0
             vfox --version      # 检查vfox版本
+            vfox use nodejs@22.13.0
             echo "PATH: $PATH"  # 打印 PATH 环境变量
             which pm2          # 检查 pm2 是否在 PATH 中
             pm2 -v             # 检查 pm2 版本
