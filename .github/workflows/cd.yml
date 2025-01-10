@@ -64,13 +64,13 @@ jobs:
       run:
         working-directory: ${{ github.workspace }}/service
     steps:
-      # 检查工作目录
-      - name: Check workspace
-        run: pwd
-
       # 检出 Git 仓库
       - name: Check out git repository
         uses: actions/checkout@v4.1.1
+
+      # 检查工作目录
+      - name: Check workspace
+        run: pwd
 
       # 安装 Node.js
       - name: Install Node.js
