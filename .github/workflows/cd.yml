@@ -119,7 +119,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             #!/usr/bin/env bash
-            echo 'eval "$(vfox activate bash)"' >> ~/.bashrc && source ~/.bashrc && vfox use nodejs@22.13.0 && npm ls -g # 检查 npm全局安装的包
+            source ~/.bashrc && vfox use nodejs@22.13.0 && npm ls -g # 检查 npm全局安装的包
 
   # 并行运行任务
   deploy:
