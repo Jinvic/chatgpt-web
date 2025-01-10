@@ -122,14 +122,12 @@ jobs:
             echo 'eval "$(vfox activate bash)"' >> ~/.bashrc
             source ~/.bashrc
             echo "PATH: $PATH"  # 打印 PATH 环境变量
-            cd ${{ secrets.BACKEND_PATH }} 
             vfox --version      # 检查vfox版本
-            vfox use nodejs@22.13.0
-            node -v             # 检查 nodejs 版本
-            npm ls -g           # 检查 npm全局安装的包
-            which pm2           # 检查 pm2 是否在 PATH 中
-            pm2 -v              # 检查 pm2 版本
-            pm2 restart chatgpt-web-service || pm2 start "pnpm prod" --name "chatgpt-web-service"
+            vfox use nodejs@22.13.0 && node -v             # 检查 nodejs 版本
+            vfox use nodejs@22.13.0 && npm ls -g           # 检查 npm全局安装的包
+            vfox use nodejs@22.13.0 && which pm2           # 检查 pm2 是否在 PATH 中
+            vfox use nodejs@22.13.0 && pm2 -v              # 检查 pm2 版本
+            vfox use nodejs@22.13.0 && cd ${{ secrets.BACKEND_PATH }} && pm2 restart chatgpt-web-service || pm2 start "pnpm prod" --name "chatgpt-web-service"
 
   # 并行运行任务
   deploy:
