@@ -111,7 +111,7 @@ jobs:
           username: ${{ secrets.FTP_USER_BACKEND }}
           password: ${{ secrets.FTP_PASS_BACKEND }}
           local-dir: ${{ github.workspace }}/service/build/
-          server-dir: ./build/
+          server-dir: ./
 
       # 启动后端服务
       - name: executing remote ssh commands using password
