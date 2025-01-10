@@ -120,9 +120,9 @@ jobs:
           script: |
             #!/usr/bin/env bash
             eval "$(vfox activate bash)"
-            vfox --version
+            cd ${{ secrets.BACKEND_PATH }}
             vfox use nodejs@22.13.0
-            npm ls -g # 检查 npm全局安装的包
+            pm2 restart chatgpt-web-service || pm2 start "pnpm prod" --name "chatgpt-web-service"
 
   # 并行运行任务
   deploy:
