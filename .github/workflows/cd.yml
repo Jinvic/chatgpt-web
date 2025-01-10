@@ -106,7 +106,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER_BACKEND }}
           password: ${{ secrets.FTP_PASS_BACKEND }}
-          local-dir: ${{ github.workspace }}/service/dist/
+          local-dir: ${{ github.workspace }}/service/build/
           server-dir: ./
 
       # 启动后端服务
