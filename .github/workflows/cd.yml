@@ -46,6 +46,10 @@ jobs:
       - name: Build Website
         run: pnpm run build
 
+      # 切换目录
+      - name: Change to dist directory
+        run: cd dist
+
       # 部署到服务器
       - name: copy file via ssh password
         uses: appleboy/scp-action@v0.1.7
@@ -54,7 +58,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          source: ./dist/*
+          source: ./*
           target: ${{ secrets.FRONTEND_PATH }}
 
   backend:
@@ -76,8 +80,8 @@ jobs:
         run: npm install pnpm -g
 
       # 切换目录
-      - name: Switch Workspace
-        run: cd ./service/
+      - name: Change to dist directory
+        run: cd service
 
       # 缓存pnpm依赖
       - name: Cache pnpm modules
@@ -96,6 +100,10 @@ jobs:
       - name: Build Website
         run: pnpm run build
 
+      # 切换目录
+      - name: Change to dist directory
+        run: cd dist
+
       # 部署到服务器
       - name: copy file via ssh password
         uses: appleboy/scp-action@v0.1.7
@@ -104,7 +112,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          source: ./dist/*
+          source: ./*
           target: ${{ secrets.BACKEND_PATH }}
 
       # 启动后端服务
@@ -117,6 +125,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ${{ secrets.BACKEND_PATH }}
+            vfox use nodejs@22.13.0
             pnpm prod
 
   # 并行运行任务
